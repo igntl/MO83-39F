@@ -139,11 +139,15 @@
             letter-spacing: 1px;
         }
 
+        /* Centered Navigation Links */
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
             align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav-links a {
@@ -158,19 +162,32 @@
             text-shadow: 0 0 10px var(--primary-glow);
         }
 
-        .cta-nav {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: #0a0c14 !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: 50px;
-            font-weight: 700 !important;
-            box-shadow: 0 4px 15px var(--primary-glow);
+        .nav-social-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-social-icons a {
+            width: 38px;
+            height: 38px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1rem;
             transition: var(--transition);
         }
 
-        .cta-nav:hover {
+        .nav-social-icons a:hover {
+            background: var(--primary);
+            color: #0a0c14;
+            border-color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--primary-glow);
         }
 
         /* Hero Section */
@@ -269,7 +286,7 @@
             transform: translateY(-3px);
         }
 
-        /* Stats & Experience Counter */
+        /* Stats & Animated Counters */
         .stats-section {
             padding: 4rem 0;
             border-top: 1px solid var(--border);
@@ -453,138 +470,104 @@
             border-color: var(--primary);
         }
 
-        /* Interactive Configurator / Custom Project Builder */
-        .builder-section {
+        /* Discord Bots Category Section */
+        .discord-section {
             padding: 6rem 0;
             background: rgba(18, 22, 38, 0.5);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
 
-        .builder-container {
+        .discord-notice {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Portfolio / Achievements Gallery */
+        .portfolio-section {
+            padding: 6rem 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 3rem;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(15px);
         }
 
-        .builder-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 35px rgba(56, 189, 248, 0.2);
         }
 
-        .builder-steps h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.6rem;
-            font-weight: 600;
-        }
-
-        .form-control {
+        .portfolio-img-box {
             width: 100%;
-            padding: 1rem;
-            background: rgba(10, 12, 20, 0.8);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text-main);
-            font-size: 1rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 10px var(--primary-glow);
-        }
-
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-        }
-
-        .option-box {
-            background: rgba(10, 12, 20, 0.6);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .option-box.active, .option-box:hover {
-            border-color: var(--primary);
-            background: rgba(56, 189, 248, 0.1);
-        }
-
-        .option-box i {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .summary-card {
-            background: rgba(10, 12, 20, 0.8);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .summary-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 1rem;
         }
 
-        .summary-total {
-            font-size: 2rem;
-            font-weight: 900;
+        .portfolio-img-box i {
+            font-size: 4rem;
             color: var(--primary);
-            margin: 1.5rem 0;
-        }
-
-        /* Payment Methods Modal / Selection */
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        .pay-method {
-            background: rgba(18, 22, 38, 0.8);
-            border: 1px solid var(--border);
-            padding: 0.8rem;
-            border-radius: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-            cursor: pointer;
+            opacity: 0.8;
             transition: var(--transition);
         }
 
-        .pay-method.active {
-            border-color: var(--primary);
-            background: rgba(56, 189, 248, 0.15);
-            font-weight: bold;
+        .portfolio-card:hover .portfolio-img-box i {
+            transform: scale(1.1);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(10, 12, 20, 0.8);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .portfolio-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* Footer & Contact */
@@ -663,7 +646,7 @@
         /* Responsive Design */
         @media(max-width: 900px) {
             .hero h1 { font-size: 2.5rem; }
-            .about-grid, .builder-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
         }
     </style>
@@ -682,12 +665,21 @@
                 <div class="logo-badge">39F</div>
                 <div class="logo-text">39F STUDIO</div>
             </a>
+            
+            <!-- Centered Nav Links -->
             <ul class="nav-links">
                 <li><a href="#services">الخدمات والمتاجر</a></li>
-                <li><a href="#builder">صمم موقعك</a></li>
+                <li><a href="#discord">بوتات الدسكورد</a></li>
+                <li><a href="#portfolio">الإنجازات</a></li>
                 <li><a href="#about">خبرتنا وشهاداتنا</a></li>
-                <li><a href="#contact" class="cta-nav">تواصل معنا</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
             </ul>
+
+            <!-- Social Icons on Far Left -->
+            <div class="nav-social-icons">
+                <a href="https://wa.me/966583296424" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com" target="_blank" title="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
+            </div>
         </div>
     </header>
 
@@ -701,26 +693,26 @@
                 <h1>نبتكر لك مواقع وتطبيقات رقمية بمستوى <span>احترافي متكامل</span></h1>
                 <p>نحن مختصون بالبرمجة المتقدمة، وتصميم واجهات المستخدم، وتطوير المتاجر والمنصات الرقمية بأعلى معايير الجودة والأداء السريع تحت اسم العلامة الرائدة 39F.</p>
                 <div class="hero-btns">
-                    <a href="#builder" class="btn-primary">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> ابدأ تصميم موقعك الخاص
-                    </a>
-                    <a href="#services" class="btn-secondary">
+                    <a href="#services" class="btn-primary">
                         <i class="fa-solid fa-cart-shopping"></i> تصفح الخدمات الجاهزة
+                    </a>
+                    <a href="#portfolio" class="btn-secondary">
+                        <i class="fa-solid fa-trophy"></i> استعرض إنجازاتنا
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Stats Section with Animated Counters -->
     <section class="stats-section">
         <div class="container stats-grid">
             <div class="stat-card">
-                <h3>+100</h3>
-                <p>مشروع وبرمجية منجزة</p>
+                <h3 class="counter" data-target="200" data-prefix="+">0</h3>
+                <p>مشروع وبرمجية منجزه</p>
             </div>
             <div class="stat-card">
-                <h3>100%</h3>
+                <h3 class="counter" data-target="100" data-suffix="%">0</h3>
                 <p>كفاءة واحترافية في الأكواد</p>
             </div>
             <div class="stat-card">
@@ -728,8 +720,141 @@
                 <p>دعم فني واستشارات متواصلة</p>
             </div>
             <div class="stat-card">
-                <h3>5+</h3>
+                <h3 class="counter" data-target="5" data-suffix="+">0</h3>
                 <p>سنوات خبرة برمجية وتقنية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Products Grid Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>الخدمات والمتاجر الرقمية الجاهزة</h2>
+                <p>اختر الخدمة أو المتجر المناسب لاحتياجك، وابدأ فوراً بامتلاك أصولك الرقمية</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>موقع شركة تعريفي متكامل</h3>
+                    <p>موقع عصري احترافي لشركتك أو استوديو الخاص بك، واجهات متحركة، متوافق مع الجوال، مع نظام تواصل مباشر.</p>
+                    <div class="service-price">1,499 ريال</div>
+                    <a href="https://wa.me/966583296424?text=أهلاً%2039F،%20أريد%20طلب%20موقع%20شركة%20تعريفي" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-store"></i></div>
+                    <h3>متجر إلكتروني مصغر جاهز</h3>
+                    <p>متجر منتجات رقمية أو مادية باسمك، نظام سلة تسوق، وعرض منتجات احترافي مع إمكانية الربط بالدفع.</p>
+                    <div class="service-price">1,999 ريال</div>
+                    <a href="https://wa.me/966583296424?text=أهلاً%2039F،%20أريد%20طلب%20متجر%20إلكتروني" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+                    <h3>هوية بصرية متكاملة (39F Brand)</h3>
+                    <p>تصميم شعار احترافي، ألوان هوية، بانرات إعلانية وقوالب سوشيال ميديا جاهزة لرفع مستوى مشروعك.</p>
+                    <div class="service-price">899 ريال</div>
+                    <a href="https://wa.me/966583296424?text=أهلاً%2039F،%20أريد%20تصميم%20هوية%20بصرية" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord Bots Section -->
+    <section class="discord-section" id="discord">
+        <div class="container">
+            <div class="section-header">
+                <h2>بوتات ديسكورد احترافية ومخصصة</h2>
+                <p>ارفع مستوى مجتمع الألعاب لديك ببوتات متطورة وسريعة الاستجابة</p>
+            </div>
+
+            <!-- Notice about music bots -->
+            <div class="discord-notice">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span>تنبيه هام: نحن لا نقوم ببرمجة أو توفير بوتات الأغاني والموسيقى ابتعاداً عن الشبهات وعدم تحمل الذنوب.</span>
+            </div>
+
+            <div class="services-grid">
+                <!-- Discord Bot 1 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>بوت خاص (Custom Bot)</h3>
+                    <p>بوت مبرمج بالكامل خصيصاً لسيرفرك باسمك وشعارك، بأوامر فريدة ونظام استضافة مستقر وقوي.</p>
+                    <div class="service-price">349 ريال</div>
+                    <a href="https://wa.me/966583296424?text=أهلاً%2039F،%20أريد%20طلب%20بوت%20خاص%20ديسكورد" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+                <!-- Discord Bot 2 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
+                    <h3>بوت ترحيب جاهز</h3>
+                    <p>بوت ترحيب احترافي بصور متحركة ورسائل مخصصة وتوزيع رتب تلقائي للأعضاء الجدد بانسيابية تامة.</p>
+                    <div class="service-price">149 ريال</div>
+                    <a href="https://wa.me/966583296424?text=أهلاً%2039F،%20أريد%20طلب%20بوت%20ترحيب%20جاهز" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+                <!-- Discord Bot 3 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-ticket"></i></div>
+                    <h3>بوت تيكتات متكامل</h3>
+                    <p>نظام تذاكر دعم فني متطور مع أزرار تفاعلية، تصنيف الأقسام، إغلاق تلقائي وتسجيل محادثات الدعم.</p>
+                    <div class="service-price">199 ريال</div>
+                    <a href="https://wa.me/966583296424?text=أهلاً%2039F،%20أريد%20طلب%20بوت%20تيكتات%20متكامل" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+                <!-- Discord Bot 4 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                    <h3>بوت حماية متقدم</h3>
+                    <p>نظام أمني قوي لحماية سيرفرك من التخريب، السبام، الروابط الخبيثة، والاختراقات ورتب الإدارة الوهمية.</p>
+                    <div class="service-price">249 ريال</div>
+                    <a href="https://wa.me/966583296424?text=أهلاً%2039F،%20أريد%20طلب%20بوت%20حماية%20متقدم" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio / Achievements Gallery Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>إنجازات وأعمال 39F</h2>
+                <p>نماذج بصرية لمعارض أعمال ومواقع مجهولة وهويات برمجية نفذناها باحترافية عالية</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Item 1 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img-box">
+                        <div class="portfolio-badge">موقع تعريفي</div>
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>منصة الأعمال الرقمية الفاخرة</h3>
+                        <p>تصميم وتطوير واجهة مستخدم متكاملة بمؤثرات بصرية عصرية تضمن تجربة تصفح سريعة ومبهرة.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img-box">
+                        <div class="portfolio-badge">متجر إلكتروني</div>
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>متجر المنتجات الرقمية والخدمات</h3>
+                        <p>بناء متجر إلكتروني متكامل يدعم السلال وعمليات الدفع والتنظيم البرمجي عالي الأداء.</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img-box">
+                        <div class="portfolio-badge">نظام ويب وتطبيقات</div>
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>هندسة لوحات التحكم السحابية</h3>
+                        <p>تطوير لوحات تحكم تفاعلية مرتبطة بقواعد بيانات لحظية لإدارة العمليات والبيانات بكل سهولة.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -771,123 +896,6 @@
         </div>
     </section>
 
-    <!-- Services & Products Grid Section -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>الخدمات والمتاجر الرقمية الجاهزة</h2>
-                <p>اختر الخدمة أو المتجر المناسب لاحتياجك، وابدأ فوراً بامتلاك أصولك الرقمية</p>
-            </div>
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h3>موقع شركة تعريفي متكامل</h3>
-                    <p>موقع عصري احترافي لشركتك أو استوديو الخاص بك، واجهات متحركة، متوافق مع الجوال، مع نظام تواصل مباشر.</p>
-                    <div class="service-price">1,499 ريال</div>
-                    <a href="https://wa.me/966000000000?text=أهلاً%2039F،%20أغبى%20طلب%20موقع%20شركة%20تعريفي" target="_blank" class="service-btn">اطلب عبر واتساب</a>
-                </div>
-                <!-- Service 2 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-store"></i></div>
-                    <h3>متجر إلكتروني مصغر جاهز</h3>
-                    <p>متجر منتجات رقمية أو مادية باسمك، نظام سلة تسوق، وعرض منتجات احترافي مع إمكانية الربط بالدفع.</p>
-                    <div class="service-price">1,999 ريال</div>
-                    <a href="https://wa.me/966000000000?text=أهلاً%2039F،%20أغبى%20طلب%20متجر%20إلكتروني" target="_blank" class="service-btn">اطلب عبر واتساب</a>
-                </div>
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
-                    <h3>تطوير وبرمجة بوتات ديسكورد</h3>
-                    <p>بوتات مخصصة لسيرفرك بأوامر متقدمة، حماية، ترحيب، وأنظمة تفاعلية مصممة خصيصاً لمجتمعات الألعاب.</p>
-                    <div class="service-price">499 ريال</div>
-                    <a href="https://wa.me/966000000000?text=أهلاً%2039F،%20أبقى%20برمجة%20بوت%20ديسكورد" target="_blank" class="service-btn">اطلب عبر واتساب</a>
-                </div>
-                <!-- Service 4 -->
-                <div class="service-card">
-                    <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
-                    <h3>هوية بصرية متكاملة (39F Brand)</h3>
-                    <p>تصميم شعار احترافي، ألوان هوية، بانرات إعلانية وقوالب سوشيال ميديا جاهزة لرفع مستوى مشروعك.</p>
-                    <div class="service-price">899 ريال</div>
-                    <a href="https://wa.me/966000000000?text=أهلاً%2039F،%20أبقى%20تصميم%20هوية%20بصرية" target="_blank" class="service-btn">اطلب عبر واتساب</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Custom Project Builder -->
-    <section class="builder-section" id="builder">
-        <div class="container">
-            <div class="section-header">
-                <h2>صمم موقعك الخاص بالخطوات (39F Configurator)</h2>
-                <p>اختر خصائص موقعك المستقبلي وشاهد التكلفة الإجمالية لحظياً</p>
-            </div>
-            
-            <div class="builder-container">
-                <div class="builder-grid">
-                    <div class="builder-steps">
-                        <h3>1. اختر نوع المشروع المطلوب:</h3>
-                        <div class="options-grid" id="typeOptions">
-                            <div class="option-box active" data-price="1200" onclick="selectOption(this, 'type')">
-                                <i class="fa-solid fa-globe"></i>
-                                <span>موقع شخصي / بورتفوليو</span>
-                            </div>
-                            <div class="option-box" data-price="2500" onclick="selectOption(this, 'type')">
-                                <i class="fa-solid fa-shop"></i>
-                                <span>متجر إلكتروني</span>
-                            </div>
-                            <div class="option-box" data-price="3500" onclick="selectOption(this, 'type')">
-                                <i class="fa-solid fa-network-wired"></i>
-                                <span>منصة تفاعلية / ويب أب</span>
-                            </div>
-                        </div>
-
-                        <h3 style="margin-top: 2rem;">2. اختر الإضافات البرمجية المتقدمة:</h3>
-                        <div class="options-grid" id="addOnOptions">
-                            <div class="option-box" data-price="400" onclick="toggleAddon(this)">
-                                <i class="fa-solid fa-bolt"></i>
-                                <span>دعم سرعة فائق</span>
-                            </div>
-                            <div class="option-box" data-price="600" onclick="toggleAddon(this)">
-                                <i class="fa-solid fa-comments"></i>
-                                <span>نظام محادثة فورية</span>
-                            </div>
-                            <div class="option-box" data-price="800" onclick="toggleAddon(this)">
-                                <i class="fa-solid fa-shield-halved"></i>
-                                <span>حماية متقدمة</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group" style="margin-top: 2rem;">
-                            <label><i class="fa-solid fa-pen"></i> تفاصيل إضافية أو فكرة المشروع باختصار:</label>
-                            <textarea id="projectNotes" class="form-control" rows="3" placeholder="اكتب أي متطلبات خاصة أو تفاصيل إضافية تريدها في موقعك..."></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Summary & Payment Column -->
- تقديرات السعر وطرق الدفع -->
-                    <div class="summary-card">
-                        <div>
-                            <div class="summary-title"><i class="fa-solid fa-receipt"></i> ملخص المشروع والطلب</div>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;">السعر التقديري المبدئي:</p>
-                            <div class="summary-total" id="totalPrice">1,200 ريال</div>
-                            
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">اختر طريقة الدفع المفضلة:</p>
-                            <div class="payment-methods">
-                                <div class="pay-method active" onclick="selectPayment(this)">تحويل بنكي مباشر</div>
-                                <div class="pay-method" onclick="selectPayment(this)">بطاقة / مدى</div>
-                            </div>
-                        </div>
-
-                        <button onclick="submitCustomOrder()" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
-                            <i class="fa-brands fa-whatsapp"></i> إرسال الطلب واعتماده
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer Section -->
     <footer id="contact">
         <div class="container">
@@ -902,7 +910,7 @@
                     </p>
                     <div class="social-links">
                         <a href="https://instagram.com" target="_blank" title="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/966000000000" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://wa.me/966583296424" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
                         <a href="https://github.com" target="_blank" title="جيت هب"><i class="fa-brands fa-github"></i></a>
                     </div>
                 </div>
@@ -910,14 +918,15 @@
                     <h4>روابط سريعة</h4>
                     <ul>
                         <li><a href="#services">الخدمات الجاهزة</a></li>
-                        <li><a href="#builder">مُصمم المواقع</a></li>
+                        <li><a href="#discord">بوتات الدسكورد</a></li>
+                        <li><a href="#portfolio">الإنجازات</a></li>
                         <li><a href="#about">الشهادات والخبرة</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>تواصل مباشر معنا</h4>
                     <ul>
-                        <li><a href="https://wa.me/966000000000" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب الدعم الفني</a></li>
+                        <li><a href="https://wa.me/966583296424" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب: 966583296424+</a></li>
                         <li><a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i> حسابنا على إنستغرام</a></li>
                         <li><a href="mailto:contact@39fstudio.com"><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</a></li>
                     </ul>
@@ -929,7 +938,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Background Canvas & Interactive Logic -->
+    <!-- JavaScript for Background Canvas & Counters -->
     <script>
         // Background Interactive Tech Canvas Animation
         const canvas = document.getElementById('bgCanvas');
@@ -978,7 +987,6 @@
         function animate() {
             ctx.clearRect(0, 0, width, height);
             
-            // Draw connecting lines
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
@@ -1002,51 +1010,40 @@
         }
         animate();
 
-        // Custom Project Builder Logic
-        let basePrice = 1200;
-        let addonsTotal = 0;
-        let selectedPaymentMethod = "تحويل بنكي مباشر";
-
-        function selectOption(element, group) {
-            const parent = element.parentElement;
-            parent.querySelectorAll('.option-box').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-            basePrice = parseInt(element.getAttribute('data-price'));
-            updateTotalPrice();
+        // Animated Numbers Counter Function
+        function startCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const prefix = counter.getAttribute('data-prefix') || '';
+                const suffix = counter.getAttribute('data-suffix') || '';
+                let current = 0;
+                const increment = target / 50;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = prefix + Math.ceil(current) + suffix;
+                        setTimeout(updateCounter, 30);
+                    } else {
+                        counter.innerText = prefix + target + suffix;
+                    }
+                };
+                updateCounter();
+            });
         }
 
-        function toggleAddon(element) {
-            element.classList.toggle('active');
-            let price = parseInt(element.getAttribute('data-price'));
-            if (element.classList.contains('active')) {
-                addonsTotal += price;
-            } else {
-                addonsTotal -= price;
-            }
-            updateTotalPrice();
-        }
+        // Trigger counters when scrolled into view
+        let observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounters();
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
 
-        function selectPayment(element) {
-            element.parentElement.querySelectorAll('.pay-method').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-            selectedPaymentMethod = element.innerText;
-        }
-
-        function updateTotalPrice() {
-            let total = basePrice + addonsTotal;
-            document.getElementById('totalPrice').innerText = total.toLocaleString() + ' ريال';
-        }
-
-        function submitCustomOrder() {
-            let total = basePrice + addonsTotal;
-            let notes = document.getElementById('projectNotes').value;
-            let text = `مرحباً 39F، أريـد اعتماد طلب موقع جديد:%0A` +
-                       `- التكلفة المقدرة: ${total} ريال%0A` +
-                       `- طريقة الدفع: ${selectedPaymentMethod}%0A` +
-                       `- ملاحظات إضافية: ${notes || 'لا يوجد'}`;
-            
-            window.open(`https://wa.me/966000000000?text=${text}`, '_blank');
-        }
+        observer.observe(document.querySelector('.stats-section'));
     </script>
 </body>
 </html>
