@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39F STUDIO | استوديو الحلول الرقمية وتصميم المواقع</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-deep: #0a0c14;
+            --bg-card: rgba(18, 22, 38, 0.7);
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.4);
+            --accent: #818cf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(56, 189, 248, 0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Animated Canvas */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Glowing Orbs Effect */
+        .ambient-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            z-index: -1;
+            filter: blur(50px);
+            animation: floatGlow 10s infinite alternate;
+        }
+
+        .ambient-glow-2 {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.1) 0%, transparent 70%);
+            bottom: -150px;
+            right: -150px;
+            z-index: -1;
+            filter: blur(60px);
+            animation: floatGlow 15s infinite alternate-reverse;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Container & Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 12, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-badge {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #0a0c14;
+            box-shadow: 0 0 20px var(--primary-glow);
+            animation: pulseLogo 3s infinite;
+        }
+
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px var(--primary-glow); }
+            50% { transform: scale(1.05); box-shadow: 0 0 25px var(--primary); }
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .cta-nav {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #0a0c14 !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 700 !important;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: var(--transition);
+        }
+
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 6rem 0;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #0a0c14;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--primary-glow);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateY(-3px);
+        }
+
+        /* Stats & Experience Counter */
+        .stats-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(18, 22, 38, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Section Header Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* About & Certifications */
+        .about-section {
+            padding: 6rem 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .certs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .cert-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cert-item i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .cert-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .cert-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Services & Products Grid */
+        .services-section {
+            padding: 6rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: var(--transition);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .service-btn:hover {
+            background: var(--primary);
+            color: #0a0c14;
+            border-color: var(--primary);
+        }
+
+        /* Interactive Configurator / Custom Project Builder */
+        .builder-section {
+            padding: 6rem 0;
+            background: rgba(18, 22, 38, 0.5);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .builder-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .builder-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .builder-steps h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(10, 12, 20, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .option-box {
+            background: rgba(10, 12, 20, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .option-box.active, .option-box:hover {
+            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .option-box i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .summary-card {
+            background: rgba(10, 12, 20, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .summary-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .summary-total {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+
+        /* Payment Methods Modal / Selection */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .pay-method {
+            background: rgba(18, 22, 38, 0.8);
+            border: 1px solid var(--border);
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pay-method.active {
+            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.15);
+            font-weight: bold;
+        }
+
+        /* Footer & Contact */
+        footer {
+            padding: 5rem 0 2rem 0;
+            border-top: 1px solid var(--border);
+            background: #06080d;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-col ul a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: #0a0c14;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media(max-width: 900px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid, .builder-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background Canvas -->
+    <canvas id="bgCanvas"></canvas>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-badge">39F</div>
+                <div class="logo-text">39F STUDIO</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">الخدمات والمتاجر</a></li>
+                <li><a href="#builder">صمم موقعك</a></li>
+                <li><a href="#about">خبرتنا وشهاداتنا</a></li>
+                <li><a href="#contact" class="cta-nav">تواصل معنا</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <i class="fa-solid fa-code"></i> استوديو احترافي للحلول البرمجية وتصميم الويب
+                </div>
+                <h1>نبتكر لك مواقع وتطبيقات رقمية بمستوى <span>احترافي متكامل</span></h1>
+                <p>نحن مختصون بالبرمجة المتقدمة، وتصميم واجهات المستخدم، وتطوير المتاجر والمنصات الرقمية بأعلى معايير الجودة والأداء السريع تحت اسم العلامة الرائدة 39F.</p>
+                <div class="hero-btns">
+                    <a href="#builder" class="btn-primary">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> ابدأ تصميم موقعك الخاص
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <i class="fa-solid fa-cart-shopping"></i> تصفح الخدمات الجاهزة
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-card">
+                <h3>+100</h3>
+                <p>مشروع وبرمجية منجزة</p>
+            </div>
+            <div class="stat-card">
+                <h3>100%</h3>
+                <p>كفاءة واحترافية في الأكواد</p>
+            </div>
+            <div class="stat-card">
+                <h3>24/7</h3>
+                <p>دعم فني واستشارات متواصلة</p>
+            </div>
+            <div class="stat-card">
+                <h3>5+</h3>
+                <p>سنوات خبرة برمجية وتقنية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Credentials Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="hero-tag">معايير 39F الاستثنائية</div>
+                    <h3>نخبة المطورين والمصممين لخدمة مشاريعك التقنية</h3>
+                    <p>في 39F STUDIO لا نعتمد على القوالب الجاهزة والمقلدة، بل نبني كل سطر برمجي بعناية فائقة لضمان سرعة فائقة، أمان عالي، وتصميم فريد يعكس هويتك ويجذب عملائك.</p>
+                    <p>نمتلك خبرة عميقة في هندسة النظم، واجهات الويب التفاعلية، وتكامل قواعد البيانات السحابية لضمان استقرار عملك الرقمي بشكل كامل.</p>
+                </div>
+                <div class="certs-list">
+                    <div class="cert-item">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <div class="cert-info">
+                            <h4>شهادة خبير أمن سيبراني واختبار اختراق</h4>
+                            <span>معتمدة في حماية البيانات ومنع الثغرات البرمجية</span>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fa-solid fa-code"></i>
+                        <div class="cert-info">
+                            <h4>شهادة تطوير وتصميم الويب المتقدم</h4>
+                            <span>تخصص كامل في هندسة واجهات المستخدم Frontend & Backend</span>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fa-solid fa-bolt"></i>
+                        <div class="cert-info">
+                            <h4>مهندسو قواعد البيانات السحابية</h4>
+                            <span>خبرة في إدارة وربط السيرفرات السحابية وقواعد البيانات اللحظية</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Products Grid Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>الخدمات والمتاجر الرقمية الجاهزة</h2>
+                <p>اختر الخدمة أو المتجر المناسب لاحتياجك، وابدأ فوراً بامتلاك أصولك الرقمية</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>موقع شركة تعريفي متكامل</h3>
+                    <p>موقع عصري احترافي لشركتك أو استوديو الخاص بك، واجهات متحركة، متوافق مع الجوال، مع نظام تواصل مباشر.</p>
+                    <div class="service-price">1,499 ريال</div>
+                    <a href="https://wa.me/966000000000?text=أهلاً%2039F،%20أغبى%20طلب%20موقع%20شركة%20تعريفي" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-store"></i></div>
+                    <h3>متجر إلكتروني مصغر جاهز</h3>
+                    <p>متجر منتجات رقمية أو مادية باسمك، نظام سلة تسوق، وعرض منتجات احترافي مع إمكانية الربط بالدفع.</p>
+                    <div class="service-price">1,999 ريال</div>
+                    <a href="https://wa.me/966000000000?text=أهلاً%2039F،%20أغبى%20طلب%20متجر%20إلكتروني" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>تطوير وبرمجة بوتات ديسكورد</h3>
+                    <p>بوتات مخصصة لسيرفرك بأوامر متقدمة، حماية، ترحيب، وأنظمة تفاعلية مصممة خصيصاً لمجتمعات الألعاب.</p>
+                    <div class="service-price">499 ريال</div>
+                    <a href="https://wa.me/966000000000?text=أهلاً%2039F،%20أبقى%20برمجة%20بوت%20ديسكورد" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
+                    <h3>هوية بصرية متكاملة (39F Brand)</h3>
+                    <p>تصميم شعار احترافي، ألوان هوية، بانرات إعلانية وقوالب سوشيال ميديا جاهزة لرفع مستوى مشروعك.</p>
+                    <div class="service-price">899 ريال</div>
+                    <a href="https://wa.me/966000000000?text=أهلاً%2039F،%20أبقى%20تصميم%20هوية%20بصرية" target="_blank" class="service-btn">اطلب عبر واتساب</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Custom Project Builder -->
+    <section class="builder-section" id="builder">
+        <div class="container">
+            <div class="section-header">
+                <h2>صمم موقعك الخاص بالخطوات (39F Configurator)</h2>
+                <p>اختر خصائص موقعك المستقبلي وشاهد التكلفة الإجمالية لحظياً</p>
+            </div>
+            
+            <div class="builder-container">
+                <div class="builder-grid">
+                    <div class="builder-steps">
+                        <h3>1. اختر نوع المشروع المطلوب:</h3>
+                        <div class="options-grid" id="typeOptions">
+                            <div class="option-box active" data-price="1200" onclick="selectOption(this, 'type')">
+                                <i class="fa-solid fa-globe"></i>
+                                <span>موقع شخصي / بورتفوليو</span>
+                            </div>
+                            <div class="option-box" data-price="2500" onclick="selectOption(this, 'type')">
+                                <i class="fa-solid fa-shop"></i>
+                                <span>متجر إلكتروني</span>
+                            </div>
+                            <div class="option-box" data-price="3500" onclick="selectOption(this, 'type')">
+                                <i class="fa-solid fa-network-wired"></i>
+                                <span>منصة تفاعلية / ويب أب</span>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 2rem;">2. اختر الإضافات البرمجية المتقدمة:</h3>
+                        <div class="options-grid" id="addOnOptions">
+                            <div class="option-box" data-price="400" onclick="toggleAddon(this)">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>دعم سرعة فائق</span>
+                            </div>
+                            <div class="option-box" data-price="600" onclick="toggleAddon(this)">
+                                <i class="fa-solid fa-comments"></i>
+                                <span>نظام محادثة فورية</span>
+                            </div>
+                            <div class="option-box" data-price="800" onclick="toggleAddon(this)">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>حماية متقدمة</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 2rem;">
+                            <label><i class="fa-solid fa-pen"></i> تفاصيل إضافية أو فكرة المشروع باختصار:</label>
+                            <textarea id="projectNotes" class="form-control" rows="3" placeholder="اكتب أي متطلبات خاصة أو تفاصيل إضافية تريدها في موقعك..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Summary & Payment Column -->
+ تقديرات السعر وطرق الدفع -->
+                    <div class="summary-card">
+                        <div>
+                            <div class="summary-title"><i class="fa-solid fa-receipt"></i> ملخص المشروع والطلب</div>
+                            <p style="color: var(--text-muted); font-size: 0.9rem;">السعر التقديري المبدئي:</p>
+                            <div class="summary-total" id="totalPrice">1,200 ريال</div>
+                            
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">اختر طريقة الدفع المفضلة:</p>
+                            <div class="payment-methods">
+                                <div class="pay-method active" onclick="selectPayment(this)">تحويل بنكي مباشر</div>
+                                <div class="pay-method" onclick="selectPayment(this)">بطاقة / مدى</div>
+                            </div>
+                        </div>
+
+                        <button onclick="submitCustomOrder()" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                            <i class="fa-brands fa-whatsapp"></i> إرسال الطلب واعتماده
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-badge" style="width: 35px; height: 35px; font-size: 1rem;">39F</div>
+                        <div class="logo-text" style="font-size: 1.2rem;">39F STUDIO</div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7;">
+                        استوديو رقمي متكامل متخصص في بناء المواقع، المتاجر الإلكترونية، وتطوير الحلول البرمجية بأعلى جودة.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" title="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/966000000000" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://github.com" target="_blank" title="جيت هب"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#services">الخدمات الجاهزة</a></li>
+                        <li><a href="#builder">مُصمم المواقع</a></li>
+                        <li><a href="#about">الشهادات والخبرة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل مباشر معنا</h4>
+                    <ul>
+                        <li><a href="https://wa.me/966000000000" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب الدعم الفني</a></li>
+                        <li><a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i> حسابنا على إنستغرام</a></li>
+                        <li><a href="mailto:contact@39fstudio.com"><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                جميع الحقوق محفوظة © 2026 - 39F STUDIO.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Background Canvas & Interactive Logic -->
+    <script>
+        // Background Interactive Tech Canvas Animation
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx = -this.vx;
+                if (this.y < 0 || this.y > height) this.vy = -this.vy;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 70; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw connecting lines
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Custom Project Builder Logic
+        let basePrice = 1200;
+        let addonsTotal = 0;
+        let selectedPaymentMethod = "تحويل بنكي مباشر";
+
+        function selectOption(element, group) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.option-box').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            basePrice = parseInt(element.getAttribute('data-price'));
+            updateTotalPrice();
+        }
+
+        function toggleAddon(element) {
+            element.classList.toggle('active');
+            let price = parseInt(element.getAttribute('data-price'));
+            if (element.classList.contains('active')) {
+                addonsTotal += price;
+            } else {
+                addonsTotal -= price;
+            }
+            updateTotalPrice();
+        }
+
+        function selectPayment(element) {
+            element.parentElement.querySelectorAll('.pay-method').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            selectedPaymentMethod = element.innerText;
+        }
+
+        function updateTotalPrice() {
+            let total = basePrice + addonsTotal;
+            document.getElementById('totalPrice').innerText = total.toLocaleString() + ' ريال';
+        }
+
+        function submitCustomOrder() {
+            let total = basePrice + addonsTotal;
+            let notes = document.getElementById('projectNotes').value;
+            let text = `مرحباً 39F، أريـد اعتماد طلب موقع جديد:%0A` +
+                       `- التكلفة المقدرة: ${total} ريال%0A` +
+                       `- طريقة الدفع: ${selectedPaymentMethod}%0A` +
+                       `- ملاحظات إضافية: ${notes || 'لا يوجد'}`;
+            
+            window.open(`https://wa.me/966000000000?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html>
