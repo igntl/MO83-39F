@@ -493,15 +493,15 @@
             gap: 10px;
         }
 
-        /* Portfolio / Achievements Gallery */
+        /* Portfolio / Achievements Gallery (Professional Mockups with 39F Branding) */
         .portfolio-section {
             padding: 6rem 0;
         }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
         }
 
         .portfolio-card {
@@ -511,6 +511,8 @@
             overflow: hidden;
             transition: var(--transition);
             backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-card:hover {
@@ -519,55 +521,135 @@
             box-shadow: 0 15px 35px rgba(56, 189, 248, 0.2);
         }
 
-        .portfolio-img-box {
+        /* Mockup Browser Window Frame */
+        .browser-mockup {
             width: 100%;
-            height: 220px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+            background: #0f1322;
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .browser-header {
+            background: #171c30;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+
+        .browser-address-bar {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 15px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .mockup-screen {
+            position: relative;
+            height: 230px;
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border);
+            padding: 20px;
+            text-align: center;
         }
 
-        .portfolio-img-box i {
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.8;
-            transition: var(--transition);
+        .mockup-screen::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 12, 20, 0.7), rgba(10, 12, 20, 0.9));
         }
 
-        .portfolio-card:hover .portfolio-img-box i {
-            transform: scale(1.1);
-        }
-
-        .portfolio-badge {
+        .mockup-watermark {
             position: absolute;
             top: 15px;
-            left: 15px;
-            background: rgba(10, 12, 20, 0.8);
-            border: 1px solid var(--border);
-            padding: 0.4rem 0.9rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
+            right: 15px;
+            background: rgba(56, 189, 248, 0.2);
+            border: 1px solid var(--primary);
             color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+            z-index: 2;
         }
 
-        .portfolio-content {
+        .mockup-content-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mockup-content-inner h4 {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .mockup-content-inner p {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .portfolio-info {
             padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .portfolio-content h3 {
+        .portfolio-info h3 {
             font-size: 1.3rem;
             margin-bottom: 0.8rem;
         }
 
-        .portfolio-content p {
+        .portfolio-info p {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
         }
 
         /* Footer & Contact */
@@ -670,15 +752,15 @@
             <ul class="nav-links">
                 <li><a href="#services">الخدمات والمتاجر</a></li>
                 <li><a href="#discord">بوتات الدسكورد</a></li>
-                <li><a href="#portfolio">الإنجازات</a></li>
+                <li><a href="#portfolio">إنجازات 39F</a></li>
                 <li><a href="#about">خبرتنا وشهاداتنا</a></li>
                 <li><a href="#contact">تواصل معنا</a></li>
             </ul>
 
             <!-- Social Icons on Far Left -->
             <div class="nav-social-icons">
+                <a href="https://instagram.com/1g_i" target="_blank" title="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://wa.me/966583296424" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://instagram.com" target="_blank" title="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
     </header>
@@ -762,7 +844,7 @@
         </div>
     </section>
 
-    <!-- Discord Bots Section -->
+    <!-- Discord Bots Category Section -->
     <section class="discord-section" id="discord">
         <div class="container">
             <div class="section-header">
@@ -813,46 +895,108 @@
         </div>
     </section>
 
-    <!-- Portfolio / Achievements Gallery Section -->
+    <!-- Portfolio / Achievements Gallery Section with 39F Branded Website Mockups -->
     <section class="portfolio-section" id="portfolio">
         <div class="container">
             <div class="section-header">
                 <h2>إنجازات وأعمال 39F</h2>
-                <p>نماذج بصرية لمعارض أعمال ومواقع مجهولة وهويات برمجية نفذناها باحترافية عالية</p>
+                <p>معرض أعمال بصري يضم نماذج حية لمواقع ومنصات احترافية من تصميمه وتنفيذه الحصري</p>
             </div>
             
             <div class="portfolio-grid">
-                <!-- Item 1 -->
+                <!-- Mockup 1: E-commerce Store -->
                 <div class="portfolio-card">
-                    <div class="portfolio-img-box">
-                        <div class="portfolio-badge">موقع تعريفي</div>
-                        <i class="fa-solid fa-laptop-code"></i>
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="browser-address-bar">https://store.39f-studio.com</div>
+                        </div>
+                        <div class="mockup-screen" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80');">
+                            <div class="mockup-watermark">39F STUDIO</div>
+                            <div class="mockup-content-inner">
+                                <h4>متجر الأوسكار الرقمي</h4>
+                                <p>تصميم وتطوير واجهة متجر متكاملة</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="portfolio-content">
-                        <h3>منصة الأعمال الرقمية الفاخرة</h3>
-                        <p>تصميم وتطوير واجهة مستخدم متكاملة بمؤثرات بصرية عصرية تضمن تجربة تصفح سريعة ومبهرة.</p>
+                    <div class="portfolio-info">
+                        <div>
+                            <h3>منصة تجارة إلكترونية متطورة</h3>
+                            <p>متجر إلكتروني مصمم بمظهر فخم يعرض المنتجات الرقمية مع لوحة تحكم مخصصة وسلة شراء تفاعلية.</p>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">متجر إلكتروني</span>
+                            <span class="tag">واجهة مستخدم</span>
+                            <span class="tag">تطوير 39F</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Item 2 -->
+
+                <!-- Mockup 2: Corporate Business Website -->
                 <div class="portfolio-card">
-                    <div class="portfolio-img-box">
-                        <div class="portfolio-badge">متجر إلكتروني</div>
-                        <i class="fa-solid fa-store"></i>
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="browser-address-bar">https://corporate.39f-studio.com</div>
+                        </div>
+                        <div class="mockup-screen" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80');">
+                            <div class="mockup-watermark">39F STUDIO</div>
+                            <div class="mockup-content-inner">
+                                <h4>شركة الحلول المتقدمة</h4>
+                                <p>موقع تعريفي احترافي للشركات</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="portfolio-content">
-                        <h3>متجر المنتجات الرقمية والخدمات</h3>
-                        <p>بناء متجر إلكتروني متكامل يدعم السلال وعمليات الدفع والتنظيم البرمجي عالي الأداء.</p>
+                    <div class="portfolio-info">
+                        <div>
+                            <h3>موقع أعمال تعريفي فاخر</h3>
+                            <p>تصميم واجهات ويب متجاوبة وعصرية للشركات الكبرى، مع قسم للخدمات ونظام تواصل مباشر مع العملاء.</p>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">موقع تعريفي</span>
+                            <span class="tag">تصميم UX/UI</span>
+                            <span class="tag">تطوير 39F</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Item 3 -->
+
+                <!-- Mockup 3: Gaming Community Hub -->
                 <div class="portfolio-card">
-                    <div class="portfolio-img-box">
-                        <div class="portfolio-badge">نظام ويب وتطبيقات</div>
-                        <i class="fa-solid fa-server"></i>
+                    <div class="browser-mockup">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <span class="dot-red"></span>
+                                <span class="dot-yellow"></span>
+                                <span class="dot-green"></span>
+                            </div>
+                            <div class="browser-address-bar">https://hub.39f-studio.com</div>
+                        </div>
+                        <div class="mockup-screen" style="background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80');">
+                            <div class="mockup-watermark">39F STUDIO</div>
+                            <div class="mockup-content-inner">
+                                <h4>منصة 39F Hub الألعاب</h4>
+                                <p>مجتمع إلكتروني تفاعلي متقدم</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="portfolio-content">
-                        <h3>هندسة لوحات التحكم السحابية</h3>
-                        <p>تطوير لوحات تحكم تفاعلية مرتبطة بقواعد بيانات لحظية لإدارة العمليات والبيانات بكل سهولة.</p>
+                    <div class="portfolio-info">
+                        <div>
+                            <h3>منصة مجتمعات الألعاب والديسكورد</h3>
+                            <p>تطوير موقع ويب خاص بفرق الألعاب يربط الأعضاء بالسيرفرات ويوفر أدوات ومولدات فرق تفاعلية.</p>
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">منصة ألعاب</span>
+                            <span class="tag">تكامل ديسكورد</span>
+                            <span class="tag">تطوير 39F</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -909,9 +1053,8 @@
                         استوديو رقمي متكامل متخصص في بناء المواقع، المتاجر الإلكترونية، وتطوير الحلول البرمجية بأعلى جودة.
                     </p>
                     <div class="social-links">
-                        <a href="https://instagram.com" target="_blank" title="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://instagram.com/1g_i" target="_blank" title="إنستغرام"><i class="fa-brands fa-instagram"></i></a>
                         <a href="https://wa.me/966583296424" target="_blank" title="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://github.com" target="_blank" title="جيت هب"><i class="fa-brands fa-github"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -919,15 +1062,15 @@
                     <ul>
                         <li><a href="#services">الخدمات الجاهزة</a></li>
                         <li><a href="#discord">بوتات الدسكورد</a></li>
-                        <li><a href="#portfolio">الإنجازات</a></li>
+                        <li><a href="#portfolio">إنجازات 39F</a></li>
                         <li><a href="#about">الشهادات والخبرة</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>تواصل مباشر معنا</h4>
                     <ul>
-                        <li><a href="https://wa.me/966583296424" target="_blank"><i class="fa-brands fa-whatsapp"></i> واتساب: 966583296424+</a></li>
-                        <li><a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i> حسابنا على إنستغرام</a></li>
+                        <li><a href="https://wa.me/966583296424" target="_blank"><i class="fa-brands fa-whatsapp"></i> راسلنا عبر الواتساب</a></li>
+                        <li><a href="https://instagram.com/1g_i" target="_blank"><i class="fa-brands fa-instagram"></i> حسابنا على إنستغرام</a></li>
                         <li><a href="mailto:contact@39fstudio.com"><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</a></li>
                     </ul>
                 </div>
